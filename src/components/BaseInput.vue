@@ -5,8 +5,8 @@
       class="base-input__input"
       :value="modelValue"
       :type="type"
-      :placeholder="placeholder"
       @input="onIntput(($event.target as HTMLInputElement).value)"
+      :placeholder="placeholder"
     />
   </div>
 </template>
