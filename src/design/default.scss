@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+a {
+  border: none;
+  background-color: transparent;
+  color: $black;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
