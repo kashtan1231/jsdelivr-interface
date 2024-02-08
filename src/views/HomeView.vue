@@ -8,7 +8,7 @@
     <ais-instant-search :search-client="searchClient" index-name="instant_search">
       <ais-search-box />
       <ais-hits>
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <h2>{{ item.name }}</h2>
         </template>
       </ais-hits>
