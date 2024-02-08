@@ -14,6 +14,10 @@
 
 <style lang="scss" scoped>
   .home-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     &__title {
       margin-bottom: 64px;
       text-align: center;

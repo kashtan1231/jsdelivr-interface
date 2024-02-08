@@ -8,6 +8,8 @@
       :placeholder="placeholder"
       @input="onIntput(($event.target as HTMLInputElement).value)"
     />
+
+    <img class="base-input__search-icon" src="@/assets/search-icon.svg" alt="search-icon" />
   </div>
 </template>
 
@@ -29,6 +31,9 @@
 
 <style lang="scss" scoped>
   .base-input {
+    position: relative;
+    width: fit-content;
+
     &__input {
       min-width: 400px;
       padding: 12px;
@@ -39,6 +44,15 @@
       &:focus {
         box-shadow: inset 0 0 0 2px $black;
       }
+    }
+
+    &__search-icon {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      z-index: -1;
+      width: 32px;
+      transform: translateY(-50%);
     }
   }
 </style>
