@@ -1,17 +1,12 @@
 <template>
   <div class="page">
-    <div
-      class="page__wrapper"
-    >
+    <div class="page__wrapper">
       <RouterView />
     </div>
   </div>
 </template>
 
-<script
-  setup
-  lang="ts"
-></script>
+<script setup lang="ts"></script>
 
 <style lang="scss">
   body {
@@ -26,8 +21,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 120px
-      16px 64px;
+    padding: 120px 16px 64px;
 
     &__wrapper {
       width: 100%;
