@@ -1,10 +1,10 @@
 <template>
   <div class="home-view">
-    <h1 class="home-view__title">Wellcome to jsDelivr helper</h1>
+    <!-- <h1 class="home-view__title">Wellcome to jsDelivr helper</h1> -->
 
-    <p class="home-view__description">Type your package here</p>
+    <!-- <p class="home-view__description">Type your package here</p> -->
 
-    <BaseInput class="home-view__search" />
+    <!-- <BaseInput class="home-view__search" /> -->
   </div>
 </template>
 

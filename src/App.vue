@@ -4,15 +4,33 @@
       <RouterView />
     </div>
   </div>
+  <!-- <TheFooter /> -->
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import TheFooter from './components/TheFooter.vue'
+</script>
 
 <style lang="scss">
+  html,
+  body {
+    height: 100%;
+    max-height: 100vh;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
   body {
     width: 100%;
     color: $black;
+    font-size: 20px;
+    font-weight: 500;
     font-family: $font-family-default;
+    line-height: 24px;
   }
 
   .page {
