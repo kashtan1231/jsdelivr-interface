@@ -4,12 +4,15 @@
 
     <!-- <p class="home-view__description">Type your package here</p> -->
 
-    <!-- <BaseInput class="home-view__search" /> -->
+    <BaseInput v-model="search" placeholder="Search" class="home-view__search" />
   </div>
 </template>
 
 <script setup lang="ts">
   import BaseInput from '@/components/BaseInput.vue'
+  import { ref } from 'vue'
+
+  const search = ref('')
 </script>
 
 <style lang="scss" scoped>
