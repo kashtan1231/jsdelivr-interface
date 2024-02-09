@@ -1,23 +1,14 @@
 {
-  "extends": [
-    "stylelint-config-standard-scss",
-    "stylelint-config-recommended-vue"
-  ],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-recommended-vue"],
   "plugins": ["stylelint-order"],
   "rules": {
     "property-no-vendor-prefix": null,
     "color-function-notation": null,
+    "media-query-no-invalid": null,
     "at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": [
-          "include",
-          "mixin",
-          "media-up",
-          "media-down",
-          "each",
-          "for"
-        ]
+        "ignoreAtRules": ["include", "extend", "mixin", "media", "each", "for"]
       }
     ],
     "selector-class-pattern": "[a-z]+[a-z-]*[a-z]",

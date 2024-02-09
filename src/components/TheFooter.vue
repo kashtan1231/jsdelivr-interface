@@ -5,14 +5,12 @@
       <li>name: Konstantyn Kravchenko</li>
       <li
         >github:
-        <a href="https://github.com/kashtan1231" target="_blank">
-          https://github.com/kashtan1231
-        </a>
+        <a href="https://github.com/kashtan1231" target="_blank"> link </a>
       </li>
       <li
         >linkedIn:
         <a href="https://www.linkedin.com/in/konstatin-kravchenko-5b36b6234" target="_blank">
-          https://www.linkedin.com/in/konstatin-kravchenko-5b36b6234
+          link
         </a>
       </li>
     </ul>
@@ -28,10 +26,20 @@
     padding: 32px;
     background-color: $yellow;
 
+    @media screen and (max-width: $mobile) {
+      gap: 16px;
+      padding: 16px;
+    }
+
     &__info {
       display: flex;
       flex-direction: column;
       gap: 8px;
+
+      li {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+        @extend p;
+      }
     }
   }
 </style>

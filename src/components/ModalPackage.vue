@@ -64,6 +64,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
+    padding: 16px;
     background-color: rgba($gray, 0.5);
     backdrop-filter: blur(5px);
 
@@ -77,6 +78,13 @@
       padding: 32px;
       border-radius: 16px;
       background-color: $white;
+
+      @media screen and (max-width: $mobile) {
+        gap: 8px;
+        width: 100%;
+        min-width: unset;
+        padding: 16px;
+      }
     }
 
     &__close {
@@ -93,6 +101,10 @@
       font-size: 20px;
       line-height: 20px;
       transition-duration: 0.2s;
+
+      @media screen and (max-width: $mobile) {
+        right: 0;
+      }
 
       &:hover {
         background-color: $gray-light;
@@ -122,6 +134,7 @@
           flex-direction: column;
           gap: 8px;
           overflow: auto;
+          width: 100%;
 
           span {
             display: flex;

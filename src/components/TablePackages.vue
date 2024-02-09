@@ -2,18 +2,27 @@
   <table class="table-packages">
     <thead class="table-packages__head">
       <tr>
-        <th class="table-packages__head-name"> Name </th>
-        <th> Link </th>
+        <th class="table-packages__head-name"
+          ><p><b>Name</b></p></th
+        >
+        <th
+          ><p><b>Link</b></p></th
+        >
       </tr>
     </thead>
     <tbody class="table-packages__body">
       <tr v-for="item in list" :key="item.name">
-        <td>{{ item.name }}</td>
+        <td
+          ><p
+            ><span>{{ item.name }}</span></p
+          ></td
+        >
         <td>
           <p>
             <a :href="item.links.self" target="_blank">{{ item.links.self }}</a>
             <BaseButton class="info-button" @click="showInfo(item.name, item.type)">
-              info <img class="info-button__icon" src="@/assets/info-icon.svg" alt="info-icon" />
+              <p><b>info</b></p>
+              <img class="info-button__icon" src="@/assets/info-icon.svg" alt="info-icon" />
             </BaseButton>
           </p>
         </td>
@@ -70,7 +79,45 @@
         justify-content: space-between;
         align-items: center;
 
+        span {
+          overflow: hidden;
+          width: 100%;
+          max-width: 840px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          @media screen and (max-width: 540px) {
+            max-width: 120px;
+          }
+        }
+
+        a {
+          overflow: hidden;
+          width: 100%;
+          max-width: 840px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          @media screen and (max-width: $tablet) {
+            max-width: 300px;
+          }
+
+          @media screen and (max-width: $mobile) {
+            max-width: 200px;
+          }
+
+          @media screen and (max-width: 540px) {
+            max-width: 120px;
+          }
+        }
+
         .info-button {
+          p {
+            @media screen and (max-width: $mobile) {
+              display: none;
+            }
+          }
+
           &__icon {
             width: 20px;
           }
