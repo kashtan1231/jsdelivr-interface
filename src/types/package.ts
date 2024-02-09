@@ -12,3 +12,22 @@ export interface IPackage {
     bandwidth: number
   }
 }
+
+export interface IPackageInfo {
+  type: 'gh' | 'npm'
+  name: string
+  tags: {}
+  links: {
+    stats: string
+  }
+  versions: [
+    {
+      version: string
+      links: {
+        self: string
+        stats: string
+        entrypoints: string
+      }
+    },
+  ]
+}

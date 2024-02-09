@@ -1,4 +1,3 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { getPopularPackages } from '@/api/mainRequests'
 import type { IPackage } from '@/types/package'
@@ -9,9 +8,13 @@ interface State {
 
 export const usePackageStore = defineStore('package', {
   actions: {
-    async GET_PACKAGES() {
+    async LOAD_PACKAGES() {
       const data = await getPopularPackages()
-      this.packages = data
+      this.SET_PACKAGES(data)
+    },
+
+    SET_PACKAGES(packages: IPackage[]) {
+      this.packages = packages
     },
   },
   state: (): State => ({

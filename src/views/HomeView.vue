@@ -19,18 +19,23 @@
   import TablePackages from '@/components/TablePackages.vue'
   import type { IPackage } from '@/types/package'
 
+  const search = ref('')
+
   const packageStore = usePackageStore()
-  await packageStore.GET_PACKAGES()
+
+  const sessionStorePackages: IPackage[] = JSON.parse(sessionStorage.getItem('packages') || '[]')
+
+  if (sessionStorePackages.length < 1) {
+    await packageStore.LOAD_PACKAGES()
+
+    sessionStorage.setItem('packages', JSON.stringify(packageStore.PACKAGES))
+  } else {
+    packageStore.SET_PACKAGES(sessionStorePackages)
+  }
 
   const searchedPackages = computed(() => {
-    return packageStore.PACKAGES.filter((item: IPackage) => {
-      console.log(item.name.includes(search.value))
-
-      return item.name.includes(search.value)
-    })
+    return packageStore.PACKAGES.filter((item: IPackage) => item.name.includes(search.value))
   })
-
-  const search = ref('')
 </script>
 
 <style lang="scss" scoped>
