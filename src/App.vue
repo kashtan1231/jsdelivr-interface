@@ -1,7 +1,9 @@
 <template>
   <div class="page">
     <div class="page__wrapper">
-      <RouterView />
+      <Suspense>
+        <RouterView />
+      </Suspense>
     </div>
   </div>
   <TheFooter />
@@ -10,26 +12,21 @@
 <script setup lang="ts">
   import TheFooter from './components/TheFooter.vue'
   import { onMounted } from 'vue'
-  import { usePackageStore } from '@/stores/package'
-
-  const packageStore = usePackageStore()
-
-  onMounted(async () => {
-    packageStore.GET_PACKAGES()
-  })
 </script>
 
 <style lang="scss">
   html,
   body {
-    height: 100%;
-    max-height: 100vh;
+    min-height: 100vh;
   }
 
   #app {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    overflow: auto;
     height: 100%;
+    min-height: 100vh;
   }
 
   body {

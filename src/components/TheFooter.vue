@@ -5,15 +5,15 @@
       <li>name: Konstantyn Kravchenko</li>
       <li
         >github:
-        <RouterLink to="https://github.com/kashtan1231" target="_blank">
+        <a href="https://github.com/kashtan1231" target="_blank">
           https://github.com/kashtan1231
-        </RouterLink>
+        </a>
       </li>
       <li
         >linkedIn:
-        <RouterLink to="https://www.linkedin.com/in/konstatin-kravchenko-5b36b6234" target="_blank">
+        <a href="https://www.linkedin.com/in/konstatin-kravchenko-5b36b6234" target="_blank">
           https://www.linkedin.com/in/konstatin-kravchenko-5b36b6234
-        </RouterLink>
+        </a>
       </li>
     </ul>
   </footer>

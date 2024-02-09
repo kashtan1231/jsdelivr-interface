@@ -1,14 +1,20 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { getPopularPackages } from '@/api/mainRequests'
+import type { IPackage } from '@/types/package'
+
+interface State {
+  packages: IPackage[]
+}
 
 export const usePackageStore = defineStore('package', {
   actions: {
     async GET_PACKAGES() {
-      getPopularPackages()
+      const data = await getPopularPackages()
+      this.packages = data
     },
   },
-  state: () => ({
+  state: (): State => ({
     packages: [],
   }),
   getters: {
