@@ -4,11 +4,19 @@
       <RouterView />
     </div>
   </div>
-  <!-- <TheFooter /> -->
+  <TheFooter />
 </template>
 
 <script setup lang="ts">
   import TheFooter from './components/TheFooter.vue'
+  import { onMounted } from 'vue'
+  import { usePackageStore } from '@/stores/package'
+
+  const packageStore = usePackageStore()
+
+  onMounted(async () => {
+    packageStore.GET_PACKAGES()
+  })
 </script>
 
 <style lang="scss">
@@ -26,6 +34,7 @@
 
   body {
     width: 100%;
+    background-color: $white;
     color: $black;
     font-size: 20px;
     font-weight: 500;
@@ -39,7 +48,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 120px 16px 64px;
+    padding: 32px 16px;
 
     &__wrapper {
       width: 100%;
