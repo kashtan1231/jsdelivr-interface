@@ -12,9 +12,9 @@
         <td>
           <p>
             <a :href="item.links.self" target="_blank">{{ item.links.self }}</a>
-            <button class="info-button" @click="showInfo(item.name, item.type)">
+            <BaseButton class="info-button" @click="showInfo(item.name, item.type)">
               info <img class="info-button__icon" src="@/assets/info-icon.svg" alt="info-icon" />
-            </button>
+            </BaseButton>
           </p>
         </td>
       </tr>
@@ -31,6 +31,7 @@
   import type { IPackage, IPackageInfo } from '@/types/package'
   import Modal from '@/components/ModalPackage.vue'
   import { getPackageInfo } from '@/api/mainRequests'
+  import BaseButton from './BaseButton.vue'
 
   defineProps<{
     list: IPackage[]
@@ -70,21 +71,6 @@
         align-items: center;
 
         .info-button {
-          display: flex;
-          gap: 4px;
-          align-items: center;
-          padding: 8px;
-          border-radius: 8px;
-          background-color: $gray-light;
-          font-size: 16px;
-          font-weight: 700;
-          line-height: 20px;
-          transition-duration: 0.2s;
-
-          &:hover {
-            background-color: $gray;
-          }
-
           &__icon {
             width: 20px;
           }
