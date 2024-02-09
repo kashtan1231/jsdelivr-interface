@@ -6,9 +6,9 @@
 
     <BaseInput
       v-model.trim="search"
-      @update:model-value="onInput"
       class="home-view__search"
       placeholder="Type here"
+      @update:model-value="onInput"
     />
 
     <template v-if="search && packageStore.PAGE_PACKAGES.length > 0">
@@ -24,11 +24,11 @@
         <BaseButton
           v-for="item in packageStore.PAGE_COUNT"
           :key="item"
-          @click="packageStore.SET_PAGE(item)"
           :class="[
             'home-view__buttons-pages',
             { 'home-view__buttons-pages--active': packageStore.PAGE === item },
           ]"
+          @click="packageStore.SET_PAGE(item)"
         />
         <BaseButton
           :disabled="packageStore.PAGE_COUNT <= packageStore.PAGE"
@@ -79,7 +79,7 @@
   }
 
   const onInput = () => {
-    if (timeout) clearTimeout(timeout.value)
+    if (timeout.value) clearTimeout(timeout.value)
 
     timeout.value = setTimeout(() => {
       packageStore.SET_SEARCHED_PACKAGES(search.value)
