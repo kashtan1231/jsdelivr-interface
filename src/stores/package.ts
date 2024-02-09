@@ -9,9 +9,13 @@ interface State {
 
 export const usePackageStore = defineStore('package', {
   actions: {
-    async GET_PACKAGES() {
+    async LOAD_PACKAGES() {
       const data = await getPopularPackages()
-      this.packages = data
+      this.SET_PACKAGES(data)
+    },
+
+    SET_PACKAGES(packages: IPackage[]) {
+      this.packages = packages
     },
   },
   state: (): State => ({
