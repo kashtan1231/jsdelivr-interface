@@ -7,8 +7,8 @@
     <BaseInput v-model.trim="search" class="home-view__search" placeholder="Type here" />
 
     <TablePackages v-if="search && searchedPackages.length > 0" :list="searchedPackages" />
-    <h5 class="home-view__nothing" v-else-if="searchedPackages.length > 0">Here will be results</h5>
-    <h5 class="home-view__nothing" v-else>Not found packages</h5>
+    <h5 v-else-if="searchedPackages.length > 0" class="home-view__nothing">Here will be results</h5>
+    <h5 v-else class="home-view__nothing">Not found packages</h5>
   </div>
 </template>
 
