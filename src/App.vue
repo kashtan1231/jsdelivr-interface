@@ -1,31 +1,37 @@
 <template>
   <div class="page">
     <div class="page__wrapper">
-      <RouterView />
+      <Suspense>
+        <RouterView />
+      </Suspense>
     </div>
   </div>
-  <!-- <TheFooter /> -->
+  <TheFooter />
 </template>
 
 <script setup lang="ts">
   import TheFooter from './components/TheFooter.vue'
+  import { onMounted } from 'vue'
 </script>
 
 <style lang="scss">
   html,
   body {
-    height: 100%;
-    max-height: 100vh;
+    min-height: 100vh;
   }
 
   #app {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    overflow: auto;
     height: 100%;
+    min-height: 100vh;
   }
 
   body {
     width: 100%;
+    background-color: $white;
     color: $black;
     font-size: 20px;
     font-weight: 500;
@@ -39,7 +45,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 120px 16px 64px;
+    padding: 32px 16px;
 
     &__wrapper {
       width: 100%;

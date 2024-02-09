@@ -1,34 +1,36 @@
 <template>
   <div class="home-view">
-    <!-- <h1 class="home-view__title">Wellcome to jsDelivr helper</h1> -->
+    <h1 class="home-view__title">Wellcome to jsDelivr helper</h1>
 
-    <!-- <p class="home-view__description">Type your package here</p> -->
+    <p class="home-view__description">Type your package here</p>
 
-    <!-- <BaseInput class="home-view__search" /> -->
-    <ais-instant-search :search-client="searchClient" index-name="instant_search">
-      <ais-search-box />
-      <ais-hits>
-        <template #item="{ item }">
-          <h2>{{ item.name }}</h2>
-        </template>
-      </ais-hits>
-    </ais-instant-search>
+    <BaseInput v-model.trim="search" class="home-view__search" placeholder="Type here" />
+
+    <TablePackages v-if="search && searchedPackages.length > 0" :list="searchedPackages" />
+    <h5 v-else-if="searchedPackages.length > 0" class="home-view__nothing">Here will be results</h5>
+    <h5 v-else class="home-view__nothing">Not found packages</h5>
   </div>
 </template>
 
-<script setup lang="ts">
+<script async setup lang="ts">
+  import { ref, computed } from 'vue'
+  import { usePackageStore } from '@/stores/package'
   import BaseInput from '@/components/BaseInput.vue'
-  import { onMounted } from 'vue'
-  import { instanceApi } from '@/api/instance'
-  import algoliasearch from 'algoliasearch/lite'
-  import 'instantsearch.css/themes/algolia-min.css'
+  import TablePackages from '@/components/TablePackages.vue'
+  import type { IPackage } from '@/types/package'
 
-  const searchClient = algoliasearch('latency', '6be0576ff61c053d5f9a3225e2a90f76')
+  const packageStore = usePackageStore()
+  await packageStore.GET_PACKAGES()
 
-  // onMounted(async () => {
-  //   const { data } = await instanceApi.get('packages/npm/bootstra')
-  //   console.log(data)
-  // })
+  const searchedPackages = computed(() => {
+    return packageStore.PACKAGES.filter((item: IPackage) => {
+      console.log(item.name.includes(search.value))
+
+      return item.name.includes(search.value)
+    })
+  })
+
+  const search = ref('')
 </script>
 
 <style lang="scss" scoped>
@@ -38,13 +40,21 @@
     align-items: center;
 
     &__title {
-      margin-bottom: 64px;
+      margin-bottom: 32px;
       text-align: center;
     }
 
     &__description {
       margin-bottom: 16px;
       text-align: center;
+    }
+
+    &__search {
+      margin-bottom: 64px;
+    }
+
+    &__nothing {
+      color: $gray;
     }
   }
 </style>
