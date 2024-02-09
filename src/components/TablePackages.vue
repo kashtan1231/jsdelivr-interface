@@ -12,7 +12,7 @@
         <td>
           <p>
             <a :href="item.links.self" target="_blank">{{ item.links.self }}</a>
-            <button @click="showInfo(item.name, item.type)" class="info-button">
+            <button class="info-button" @click="showInfo(item.name, item.type)">
               info <img class="info-button__icon" src="@/assets/info-icon.svg" alt="info-icon" />
             </button>
           </p>
@@ -22,26 +22,25 @@
   </table>
 
   <Teleport to="#app">
-    <Modal :info="modalInfo" @close="isShowModal = false" v-if="isShowModal" />
+    <Modal v-if="isShowModal" :info="modalInfo" @close="isShowModal = false" />
   </Teleport>
 </template>
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import type { IPackage } from '@/types/package'
-  import Modal from '@/components/Modal.vue'
+  import type { IPackage, IPackageInfo } from '@/types/package'
+  import Modal from '@/components/ModalPackage.vue'
   import { getPackageInfo } from '@/api/mainRequests'
 
   defineProps<{
     list: IPackage[]
   }>()
 
-  const modalInfo = ref({})
+  const modalInfo = ref<IPackageInfo | {}>({})
 
   const showInfo = async (name: string, type: 'gh' | 'npm') => {
     isShowModal.value = true
     modalInfo.value = await getPackageInfo(name, type)
-    console.log(modalInfo.value)
   }
 
   const isShowModal = ref(false)

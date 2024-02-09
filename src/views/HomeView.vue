@@ -27,7 +27,6 @@
 
   if (sessionStorePackages.length < 1) {
     await packageStore.LOAD_PACKAGES()
-    console.log('yes')
 
     sessionStorage.setItem('packages', JSON.stringify(packageStore.PACKAGES))
   } else {

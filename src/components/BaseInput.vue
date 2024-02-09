@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-  const props = defineProps<{
+  defineProps<{
     type?: string
     modelValue: string
     placeholder: string

@@ -1,4 +1,3 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { getPopularPackages } from '@/api/mainRequests'
 import type { IPackage } from '@/types/package'

@@ -15,14 +15,14 @@
         <div v-if="Object.keys(info.tags || {}).length > 0" class="list__item">
           <p><b>Tags:</b></p>
           <p class="list__item-description">
-            <span v-for="tag in info.tags">{{ tag }}</span>
+            <span v-for="tag in info.tags" :key="tag">{{ tag }}</span>
           </p>
         </div>
 
         <div v-if="info.versions?.length > 0" class="list__item list__item--versions">
           <p><b>Versions:</b></p>
           <p class="list__item-description">
-            <span v-for="version in info.versions">
+            <span v-for="version in info.versions" :key="version.version">
               {{ version.version }}
               <a :href="version.links.entrypoints" target="_blank">Entrypoints</a>
               <a :href="version.links.self" target="_blank">Self</a>
@@ -32,14 +32,16 @@
         </div>
       </div>
 
-      <button @click="onClose" class="modal__close">X</button>
+      <button class="modal__close" @click="onClose">X</button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import type { IPackageInfo } from '@/types/package'
+
   defineProps<{
-    info: {}
+    info: IPackageInfo
   }>()
 
   const emit = defineEmits<{

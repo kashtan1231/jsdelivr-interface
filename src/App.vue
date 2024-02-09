@@ -11,7 +11,6 @@
 
 <script setup lang="ts">
   import TheFooter from './components/TheFooter.vue'
-  import { onMounted } from 'vue'
 </script>
 
 <style lang="scss">
