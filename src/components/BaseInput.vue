@@ -1,6 +1,5 @@
 <template>
   <div class="base-input">
-    <!-- <label class="base-input__label"></label> -->
     <input
       class="base-input__input"
       :value="modelValue"
@@ -33,9 +32,15 @@
   .base-input {
     position: relative;
     width: fit-content;
+    width: 100%;
+    min-width: 400px;
+
+    @media screen and (max-width: $mobile) {
+      min-width: unset;
+    }
 
     &__input {
-      min-width: 400px;
+      width: 100%;
       padding: 12px;
       border-radius: 16px;
       box-shadow: inset 0 0 0 2px $gray;
